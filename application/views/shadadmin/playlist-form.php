@@ -25,6 +25,21 @@
             </form>
         </div>
         
+		<div id="dialog-form-rss" class="dialog-window" title="RSS Form">
+            <form action="" id="form-rss">
+            <ul>
+                <li>
+                    <label>Name</label><br />
+                    <input type="text" id="rss-name" name="rss-name" class="text-input-size" style="font-size: 22px;">
+                </li>
+                <li>
+                    <label>Content</label>
+                    <input type="text" id="rss-content" name="rss-content" class="text-input-size" style="font-size: 22px;">
+                </li>
+            </ul>
+            </form>
+        </div>
+
         <div id="dialog-file-browser" class="dialog-window" title="File List">
             <input type="hidden" id="dialog-file-browser-pl_id" name="dialog-file-browser-pl_id">
             <ul class="file-list">
@@ -53,6 +68,22 @@
                 <li>
                     <label>Content</label>
                     <textarea id="text-content-edit" class="text-area-size" cols="" rows=""></textarea>
+                </li>
+            </ul>
+            </form>
+        </div>
+
+		<div id="dialog-form-rss-edit" class="dialog-window" title="RSS Form">
+            <form action="" id="form-rss">
+            <input type="hidden" id="pl_rss_id" name="pl_rss_id">
+            <ul>
+                <li>
+                    <label>Name</label><br />
+                    <input type="text" id="rss-name-edit" name="rss-name" class="text-input-size" style="font-size: 22px;">
+                </li>
+                <li>
+                    <label>Content</label>
+                    <input type="text" id="rss-content-edit" name="rss-content" class="text-input-size" style="font-size: 22px;">
                 </li>
             </ul>
             </form>
@@ -143,12 +174,13 @@
                                             </li>
                                             <?php } else { ?>
                                             <li id="sortable_li-<?php echo $playlist_contents->id;?>" class="sortable_li_text">
+												<input type="hidden" name="pl_item_rss[]" value="<?php echo $playlist_contents->rss;?>" />
                                                 <div class="pl_item_holder">
                                                     <div class="pl_item_cb_holder">
                                                         <input type="checkbox" name="pl_item_cb" class="pl_item_cb_class" value="<?php echo $playlist_contents->id;?>:<?php echo $playlist_contents->name;?>">
                                                     </div>
                                                     <div class="pl_item_name_holder top3px">
-                                                        <input type="text" name="pl_item_name[]" class="class_pl_item_name" id="pl_item_name<?php echo $playlist_contents->id;?>" style="border:none;width:220px;" value="<?php echo $playlist_contents->name;?>" readOnly> <a class="text-edit" id="<?php echo $playlist_contents->id;?>"><img src="<?php echo url::base();?>media/images/edit-icon.png" border="0"></a>
+                                                        <input type="text" name="pl_item_name[]" class="class_pl_item_name" id="pl_item_name<?php echo $playlist_contents->id;?>" style="border:none;width:220px;" value="<?php echo $playlist_contents->name;?>" readOnly> <a class="rss-edit" id="<?php echo $playlist_contents->id;?>"><img src="<?php echo url::base();?>media/images/edit-icon.png" border="0"></a>
                                                     </div>
                                                     <div class="pl_item_text_content_holder">
                                                         <textarea name="pl_item_text_content[]" id="pl_item_text_content<?php echo $playlist_contents->id;?>" class="pl_item_text_content mceNoEditor"><?php echo $playlist_contents->content;?></textarea>
@@ -204,6 +236,9 @@
 									<?php if($style_width){ ?>
                                     <div class="add_item_holder"><input type="button" id="add_item_text" class="button_one" value="ADD ITEM"></div>
                                     <?php } ?>
+									<?php if($component_type == 'text'):?>
+									<div class="add_rss_holder"><input type="button" id="add_item_rss" class="button_one" value="ADD RSS"></div>
+									<?php endif;?>
 								</div>
 							</div>
 							<?php echo $filebrowser; ?>

@@ -679,7 +679,7 @@ $('document').ready(function()
                 pl_list_no = $('#sortable > li').size();
                 $('#sortable')
                 .hide()
-                .append('<li id="sortable_li-'+pl_list_no+'" class="sortable_li_text"><div class="pl_item_holder"><div class="pl_item_cb_holder"><input type="checkbox" name="pl_item_cb" class="pl_item_cb_class" value="'+pl_list_no+':'+$('#text-name').val()+'"></div><div class="pl_item_name_holder top3px"><input type="text" name="pl_item_name[]" class="class_pl_item_name" id="pl_item_name'+pl_list_no+'" style="border:none;width:220px;" value="'+$('#text-name').val()+'" readOnly> <a class="text-edit" id="'+pl_list_no+'"><img src="<?php echo url::base();?>media/images/edit-icon.png" border="0"></a></div><div class="pl_item_text_content_holder"><textarea name="pl_item_text_content[]" id="pl_item_text_content'+pl_list_no+'" class="pl_item_text_content mceNoEditor">'+tinyMCE.get('text-content').getContent()+'</textarea></div><div class="text-add-image-holder" id="text-add-image-holder'+pl_list_no+'"><a class="text-add-image" id="'+pl_list_no+'"><img src="<?php echo url::base();?>media/images/add-icon.png" border="0"></a><input type="hidden" name="pl_item_image[]" value=""></div> <div class="pl_item_text_img_align_holder"><select name="pl_item_text_img_align[]" class="class_pl_item_text_img_align"><option value="left">Left</option><option value="right">Right</option></select></div> <div class="pl_item_remove_holder"><a class="remove_pl_item"><img src="<?php echo url::base();?>media/images/delete-16x16.png" border="0"></a></div></div>')
+                .append('<li id="sortable_li-'+pl_list_no+'" class="sortable_li_text"><input type="hidden" name="pl_item_rss[]" value="" /><div class="pl_item_holder"><div class="pl_item_cb_holder"><input type="checkbox" name="pl_item_cb" class="pl_item_cb_class" value="'+pl_list_no+':'+$('#text-name').val()+'"></div><div class="pl_item_name_holder top3px"><input type="text" name="pl_item_name[]" class="class_pl_item_name" id="pl_item_name'+pl_list_no+'" style="border:none;width:220px;" value="'+$('#text-name').val()+'" readOnly> <a class="text-edit" id="'+pl_list_no+'"><img src="<?php echo url::base();?>media/images/edit-icon.png" border="0"></a></div><div class="pl_item_text_content_holder"><textarea name="pl_item_text_content[]" id="pl_item_text_content'+pl_list_no+'" class="pl_item_text_content mceNoEditor">'+tinyMCE.get('text-content').getContent()+'</textarea></div><div class="text-add-image-holder" id="text-add-image-holder'+pl_list_no+'"><a class="text-add-image" id="'+pl_list_no+'"><img src="<?php echo url::base();?>media/images/add-icon.png" border="0"></a><input type="hidden" name="pl_item_image[]" value=""></div> <div class="pl_item_text_img_align_holder"><select name="pl_item_text_img_align[]" class="class_pl_item_text_img_align"><option value="left">Left</option><option value="right">Right</option></select></div> <div class="pl_item_remove_holder"><a class="remove_pl_item"><img src="<?php echo url::base();?>media/images/delete-16x16.png" border="0"></a></div></div>')
                 .fadeIn("slow");
                 
                 $(this).dialog('close');
@@ -731,8 +731,8 @@ $('document').ready(function()
                     $('#pl_item_name'+$('#pl_id').val()).val($('#text-name-edit').val());
                     $('#pl_item_text_content'+$('#pl_id').val()).val(tinyMCE.get('text-content-edit').getContent());
                     
-                    $('#text-name').val('');
-                    $('#text-content').val('');
+                    $('#text-name-edit').val('');
+                    $('#text-content-edit').val('');
                     tinyMCE.get('text-content-edit').getContent() == '';
                     
                     $(this).dialog('close');
@@ -789,6 +789,89 @@ $('document').ready(function()
         $('#text-add-image-holder'+$(this).attr('id')).html('<a class="text-add-image" id="'+$(this).attr('id')+'"><img src="<?php echo url::base();?>media/images/add-icon.png" border="0"></a><input type="hidden" name="pl_item_image[]" value="">');
     });
     
+	//RSS Add item
+	//RSS Form Dialog
+    $("#dialog-form-rss").dialog({
+        autoOpen: false,
+        bgiframe: true,
+        modal: true,
+        resizable: false,
+        width: 600,
+        height: 230,
+        show: 'fadeIn',
+        hide: 'fadeOut',
+        open:function(event, id) {
+              $('#rss-name').val('');
+              $('#rss-content').val('');
+        },
+        close:function(event, id) {
+            document.forms['form-rss'].reset();
+        },
+        buttons: {
+            Cancel: function() {
+                $(this).dialog('close');
+            },
+            Add: function() {
+                //count_text_item = count_text_item + 1;
+                pl_list_no = $('#sortable > li').size();
+                $('#sortable')
+                .hide()
+                .append('<li id="sortable_li-'+pl_list_no+'" class="sortable_li_text"><input type="hidden" name="pl_item_rss[]" value="1" /><div class="pl_item_holder"><div class="pl_item_cb_holder"><input type="checkbox" name="pl_item_cb" class="pl_item_cb_class" value="'+pl_list_no+':'+$('#rss-name').val()+'"></div><div class="pl_item_name_holder top3px"><input type="text" name="pl_item_name[]" class="class_pl_item_name" id="pl_item_name'+pl_list_no+'" style="border:none;width:220px;" value="'+$('#rss-name').val()+'" readOnly> <a class="rss-edit" id="'+pl_list_no+'"><img src="<?php echo url::base();?>media/images/edit-icon.png" border="0"></a></div><div class="pl_item_text_content_holder"><textarea name="pl_item_text_content[]" id="pl_item_text_content'+pl_list_no+'" class="pl_item_text_content mceNoEditor">'+$('#rss-content').val()+'</textarea></div><div class="text-add-image-holder" id="text-add-image-holder'+pl_list_no+'"><a class="text-add-image" id="'+pl_list_no+'"><img src="<?php echo url::base();?>media/images/add-icon.png" border="0"></a><input type="hidden" name="pl_item_image[]" value=""></div> <div class="pl_item_text_img_align_holder"><select name="pl_item_text_img_align[]" class="class_pl_item_text_img_align"><option value="left">Left</option><option value="right">Right</option></select></div> <div class="pl_item_remove_holder"><a class="remove_pl_item"><img src="<?php echo url::base();?>media/images/delete-16x16.png" border="0"></a></div></div>')
+                .fadeIn("slow");
+                
+                $(this).dialog('close');
+            }
+        }
+    });
+
+	//Edit RSS playlist item
+    $('.rss-edit').live('click', function(e){
+        var pl_id = $(this).attr('id');
+        var parentlist = $(this).parents('li');
+        
+        //alert(parentlist.attr('id'))
+        
+        name_value    = parentlist.children('.pl_item_holder').children('.pl_item_name_holder').children('.class_pl_item_name').val();
+        content_value = parentlist.children('.pl_item_holder').children('.pl_item_text_content_holder').children('.pl_item_text_content').val();
+        
+        $('#pl_rss_id').val(pl_id);
+        $('#rss-name-edit').val(name_value);
+        $('#rss-content-edit').val(content_value);
+        
+        $("#dialog-form-rss-edit").dialog({
+            autoOpen: false,
+            bgiframe: true,
+            modal: true,
+            resizable: false,
+            width: 600,
+            height: 230,
+            show: 'fadeIn',
+            hide: 'fadeOut',
+            open:function(event, id) {
+            },
+            close:function(event, id) {
+                document.forms['form-rss'].reset();
+            },
+            buttons: {
+                Cancel: function(){
+                    $(this).dialog('close');
+                },
+                Update: function() {
+                    $('#pl_item_name'+$('#pl_rss_id').val()).val($('#rss-name-edit').val()); //rss-content-edit
+                    $('#pl_item_text_content'+$('#pl_rss_id').val()).val($('#rss-content-edit').val());
+                    
+                    $('#rss-name-edit').val('');
+                    $('#rss-content-edit').val('');
+                    
+                    $(this).dialog('close');
+                }
+            }
+        });
+        
+        $("#dialog-form-rss-edit").dialog("open");
+    });
+	
+
     //Video - for fullscreen option
     $('.cb_fullscreen').live('click', function(e)
     {
@@ -956,6 +1039,12 @@ $('document').ready(function()
         $("#dialog-form-text").dialog("open");
     });
     
+	//Open RSS Form Dialog
+    $('#add_item_rss').click(function(e){
+        $("#dialog-form-rss").dialog("open");
+    });
+	
+
 	// Remove Layout
 	$('.remove_layout').click(function(e){
 		var agree=confirm("Do you want to delete this layout?");

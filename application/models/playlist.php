@@ -169,7 +169,7 @@ class Playlist_Model extends Model {
     }
     
     //Create Text Player
-	public function create_text_playlist($name,$type,$pl_item_name,$pl_item_text_content,$pl_item_filename,$pl_item_text_img_align)
+	public function create_text_playlist($name,$type,$pl_item_name,$pl_item_text_content,$pl_item_filename,$pl_item_text_img_align,$pl_item_rss)
 	{
 		$this->db->query("INSERT INTO playlist (name, type, created_on) VALUES ('".mysql_real_escape_string($name)."', '$type', NOW())");
 		
@@ -183,14 +183,15 @@ class Playlist_Model extends Model {
                     content         = '".mysql_real_escape_string($pl_item_text_content[$i])."', 
                     image           = '".mysql_real_escape_string($pl_item_filename[$i])."', 
                     image_alignment = '".mysql_real_escape_string($pl_item_text_img_align[$i])."', 
-                    sort_id         = $i");
+                    rss             = '".$pl_item_rss[$i]."', 
+					sort_id         = $i");
             }
 		}
 		
 		return $last_inserted_id; 
 	}
 	
-	public function update_text_playlist($id,$name,$pl_item_name,$pl_item_text_content,$pl_item_filename,$pl_item_text_img_align)
+	public function update_text_playlist($id,$name,$pl_item_name,$pl_item_text_content,$pl_item_filename,$pl_item_text_img_align,$pl_item_rss)
 	{
 		$this->db->query("UPDATE playlist SET name = '".mysql_real_escape_string($name)."', modified_on = NOW() WHERE id = $id");
 		
@@ -214,6 +215,7 @@ class Playlist_Model extends Model {
                     content         = '".mysql_real_escape_string($pl_item_text_content[$i])."', 
                     image           = '".mysql_real_escape_string($pl_item_filename[$i])."', 
                     image_alignment = '".mysql_real_escape_string($pl_item_text_img_align[$i])."', 
+					rss             = '".$pl_item_rss[$i]."', 
                     sort_id         = $i");
             }
 		}

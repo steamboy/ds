@@ -100,13 +100,14 @@ class Playlist_Controller extends Template_Controller {
                     }
                     elseif($component_type == 'text') //Text
                     {
-                        $id = $this->playlist_model->create_text_playlist(
+						$id = $this->playlist_model->create_text_playlist(
                             $this->input->post('playlist_name'),
                             'text',
                             $this->input->post('pl_item_name'),
                             $this->input->post('pl_item_text_content'),
                             $this->input->post('pl_item_image'),
-                            $this->input->post('pl_item_text_img_align')
+                            $this->input->post('pl_item_text_img_align'),
+							$this->input->post('pl_item_rss')
                         );
                     }
                     url::redirect('playlist/component/'.$component_type.'/update/'.$id.'/msg_playlist_create');
@@ -165,7 +166,8 @@ class Playlist_Controller extends Template_Controller {
                     $this->input->post('pl_item_name'),
                     $this->input->post('pl_item_text_content'),
                     $this->input->post('pl_item_image'),
-                    $this->input->post('pl_item_text_img_align')
+                    $this->input->post('pl_item_text_img_align'),
+					$this->input->post('pl_item_rss')
                     );
                 }
                 
