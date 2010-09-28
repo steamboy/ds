@@ -31,7 +31,7 @@ $config['default'] = array
 	(
 		'type'     => 'mysql',
 		'user'     => 'root',
-		'pass'     => '',
+		'pass'     => 'password',
 		'host'     => 'localhost',
 		'port'     => FALSE,
 		'socket'   => FALSE,

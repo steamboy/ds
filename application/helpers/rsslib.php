@@ -200,6 +200,45 @@ class rsslib_Core {
 		return $page."\n";
 	
 	}
+	
+	public static function RSS_DisplayList($url, $size = 15, $site = 0, $withdate = 0, $id, $name, $image, $alignment)
+	{
+		global $RSS_Content;
+
+		$opened = false;
+		$page = "";
+		$site = (intval($site) == 0) ? 1 : 0;
+
+		rsslib::RSS_Retrieve($url);
+		if($size > 0)
+			$recents = array_slice($RSS_Content, $site, $size + 1 - $site);
+
+		foreach($recents as $article)
+		{
+			$title = $article["title"];
+			$link = $article["link"];
+			$page .= '<item id="'.$id.'" name="'.$name.'" type="text" image="content/image/'.$image.'" alignment="'.$alignment.'"><![CDATA[';
+			if($withdate)
+			{
+	      		$date = $article["date"];
+	      		//$page .=' <span class="rssdate">'.$date.'</span>';
+	    	}
+			$description = $article["description"];
+			if($description != false)
+			{
+				//$page .= "<br><span class='rssdesc'>$description</span>";
+				$page .= $description;
+			}
+			$page .= "]]></item>\n";			
+		}
+
+		if($opened == true)
+		{	
+			//$page .="]]></item>";
+		}
+		return $page."\n";
+	
+	}
 }
 
 ?>

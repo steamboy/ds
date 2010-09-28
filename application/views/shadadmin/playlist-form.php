@@ -180,7 +180,7 @@
                                                         <input type="checkbox" name="pl_item_cb" class="pl_item_cb_class" value="<?php echo $playlist_contents->id;?>:<?php echo $playlist_contents->name;?>">
                                                     </div>
                                                     <div class="pl_item_name_holder top3px">
-                                                        <input type="text" name="pl_item_name[]" class="class_pl_item_name" id="pl_item_name<?php echo $playlist_contents->id;?>" style="border:none;width:220px;" value="<?php echo $playlist_contents->name;?>" readOnly> <a class="rss-edit" id="<?php echo $playlist_contents->id;?>"><img src="<?php echo url::base();?>media/images/edit-icon.png" border="0"></a>
+                                                        <input type="text" name="pl_item_name[]" class="class_pl_item_name" id="pl_item_name<?php echo $playlist_contents->id;?>" style="border:none;width:220px;" value="<?php echo $playlist_contents->name;?>" readOnly> <a class="<?php echo ($playlist_contents->rss) ? 'rss-edit' : 'text-edit';?>" id="<?php echo $playlist_contents->id;?>"><img src="<?php echo url::base();?>media/images/edit-icon.png" border="0"></a>
                                                     </div>
                                                     <div class="pl_item_text_content_holder">
                                                         <textarea name="pl_item_text_content[]" id="pl_item_text_content<?php echo $playlist_contents->id;?>" class="pl_item_text_content mceNoEditor"><?php echo $playlist_contents->content;?></textarea>

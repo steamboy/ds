@@ -401,6 +401,13 @@ a {cursor: pointer; cursor: hand;}
     left: 235px;
 }
 
+#playlist_section .bottom_nav .bottom_nav_holder .add_rss_holder {
+    position: absolute;
+    top: 0;
+    left: 300px;
+}
+
+
 	/*  playlist column title / spacing */
 
 .pl_item_holder{

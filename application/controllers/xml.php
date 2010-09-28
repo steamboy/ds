@@ -12,6 +12,7 @@ class Xml_Controller extends Controller {
         		
 		$this->playlist_model = new Playlist_Model;
 		$this->layout_model   = new Layout_Model;
+		
 	}
  
  	public function index()
