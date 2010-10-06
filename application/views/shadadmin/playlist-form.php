@@ -34,7 +34,7 @@
                 </li>
                 <li>
                     <label>Content</label>
-                    <input type="text" id="rss-content" name="rss-content" class="text-input-size" style="font-size: 22px;">
+					<textarea id="rss-content" class="text-area-size" cols="" rows=""></textarea>
                 </li>
             </ul>
             </form>
@@ -83,7 +83,7 @@
                 </li>
                 <li>
                     <label>Content</label>
-                    <input type="text" id="rss-content-edit" name="rss-content" class="text-input-size" style="font-size: 22px;">
+					<textarea id="rss-content-edit" class="text-area-size" cols="" rows=""></textarea>
                 </li>
             </ul>
             </form>

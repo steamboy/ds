@@ -797,15 +797,23 @@ $('document').ready(function()
         modal: true,
         resizable: false,
         width: 600,
-        height: 230,
+        height: 410,
         show: 'fadeIn',
         hide: 'fadeOut',
         open:function(event, id) {
-              $('#rss-name').val('');
-              $('#rss-content').val('');
+			loadTinyMCE();
+        	$('#rss-name').val('');
+			$('#rss-content').val('');
         },
         close:function(event, id) {
             document.forms['form-rss'].reset();
+			tinyMCE.get('rss-content').getContent() == '';
+            var i, t = tinyMCE.editors;
+            for (i in t){
+                if (t.hasOwnProperty(i)){
+                    t[i].remove();
+                }
+            }
         },
         buttons: {
             Cancel: function() {
@@ -816,7 +824,7 @@ $('document').ready(function()
                 pl_list_no = $('#sortable > li').size();
                 $('#sortable')
                 .hide()
-                .append('<li id="sortable_li-'+pl_list_no+'" class="sortable_li_text"><input type="hidden" name="pl_item_rss[]" value="1" /><div class="pl_item_holder"><div class="pl_item_cb_holder"><input type="checkbox" name="pl_item_cb" class="pl_item_cb_class" value="'+pl_list_no+':'+$('#rss-name').val()+'"></div><div class="pl_item_name_holder top3px"><input type="text" name="pl_item_name[]" class="class_pl_item_name" id="pl_item_name'+pl_list_no+'" style="border:none;width:220px;" value="'+$('#rss-name').val()+'" readOnly> <a class="rss-edit" id="'+pl_list_no+'"><img src="<?php echo url::base();?>media/images/edit-icon.png" border="0"></a></div><div class="pl_item_text_content_holder"><textarea name="pl_item_text_content[]" id="pl_item_text_content'+pl_list_no+'" class="pl_item_text_content mceNoEditor">'+$('#rss-content').val()+'</textarea></div><div class="text-add-image-holder" id="text-add-image-holder'+pl_list_no+'"><a class="text-add-image" id="'+pl_list_no+'"><img src="<?php echo url::base();?>media/images/add-icon.png" border="0"></a><input type="hidden" name="pl_item_image[]" value=""></div> <div class="pl_item_text_img_align_holder"><select name="pl_item_text_img_align[]" class="class_pl_item_text_img_align"><option value="left">Left</option><option value="right">Right</option></select></div> <div class="pl_item_remove_holder"><a class="remove_pl_item"><img src="<?php echo url::base();?>media/images/delete-16x16.png" border="0"></a></div></div>')
+                .append('<li id="sortable_li-'+pl_list_no+'" class="sortable_li_text"><input type="hidden" name="pl_item_rss[]" value="1" /><div class="pl_item_holder"><div class="pl_item_cb_holder"><input type="checkbox" name="pl_item_cb" class="pl_item_cb_class" value="'+pl_list_no+':'+$('#rss-name').val()+'"></div><div class="pl_item_name_holder top3px"><input type="text" name="pl_item_name[]" class="class_pl_item_name" id="pl_item_name'+pl_list_no+'" style="border:none;width:220px;" value="'+$('#rss-name').val()+'" readOnly> <a class="rss-edit" id="'+pl_list_no+'"><img src="<?php echo url::base();?>media/images/edit-icon.png" border="0"></a></div><div class="pl_item_text_content_holder"><textarea name="pl_item_text_content[]" id="pl_item_text_content'+pl_list_no+'" class="pl_item_text_content mceNoEditor">'+tinyMCE.get('rss-content').getContent()+'</textarea></div><div class="text-add-image-holder" id="text-add-image-holder'+pl_list_no+'"><a class="text-add-image" id="'+pl_list_no+'"><img src="<?php echo url::base();?>media/images/add-icon.png" border="0"></a><input type="hidden" name="pl_item_image[]" value=""></div> <div class="pl_item_text_img_align_holder"><select name="pl_item_text_img_align[]" class="class_pl_item_text_img_align"><option value="left">Left</option><option value="right">Right</option></select></div> <div class="pl_item_remove_holder"><a class="remove_pl_item"><img src="<?php echo url::base();?>media/images/delete-16x16.png" border="0"></a></div></div>')
                 .fadeIn("slow");
                 
                 $(this).dialog('close');
@@ -844,13 +852,21 @@ $('document').ready(function()
             modal: true,
             resizable: false,
             width: 600,
-            height: 230,
+            height: 410,
             show: 'fadeIn',
             hide: 'fadeOut',
             open:function(event, id) {
+				loadTinyMCE();
             },
             close:function(event, id) {
                 document.forms['form-rss'].reset();
+				tinyMCE.get('rss-content-edit').getContent() == '';
+                var i, t = tinyMCE.editors;
+                for (i in t){
+                    if (t.hasOwnProperty(i)){
+                        t[i].remove();
+                    }
+                }
             },
             buttons: {
                 Cancel: function(){
@@ -858,7 +874,7 @@ $('document').ready(function()
                 },
                 Update: function() {
                     $('#pl_item_name'+$('#pl_rss_id').val()).val($('#rss-name-edit').val()); //rss-content-edit
-                    $('#pl_item_text_content'+$('#pl_rss_id').val()).val($('#rss-content-edit').val());
+                    $('#pl_item_text_content'+$('#pl_rss_id').val()).val(tinyMCE.get('rss-content-edit').getContent());
                     
                     $('#rss-name-edit').val('');
                     $('#rss-content-edit').val('');
