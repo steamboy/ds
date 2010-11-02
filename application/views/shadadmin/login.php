@@ -9,7 +9,7 @@
 			</ul>
 	<?php	endif ?>
 	
-		<?php echo form::open(); ?>
+		<?php echo form::open('users/login', array('id'=>'user_login')); ?>
 		<div>
 		    <ul>
                 <li><?php echo form::label('username', 'Username');?> <?php echo form::input('username', form::set_value('username'));?></li>

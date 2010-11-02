@@ -133,7 +133,7 @@ li { margin-left: 20px;}
 
 .navigation ul li {
 	margin: 0;
-	padding: 0 15px;
+	padding: 2px 15px;
 	border-top: 1px solid #e8e8e8;
 	background: url(../images/navigation-off.gif) repeat-x;
 	line-height: 24px;
@@ -175,6 +175,10 @@ li { margin-left: 20px;}
 
 .highlight-nav-link {
 	color: #F8F508;
+}
+
+.navigation ul li img {
+	vertical-align: middle;
 }
 
 /* Search */
