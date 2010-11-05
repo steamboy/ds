@@ -284,21 +284,38 @@ function loadTinyMCE(){
         editor_deselector : "mceNoEditor",
         convert_fonts_to_spans : false,
         width : "570",
-        theme_advanced_fonts :
+       /*
+ 		theme_advanced_fonts :
             "Arial=Arial;"+
             "Adihaus=Adihaus;"+
             "Century Gothic=Century Gothic;"+
             "Impact=Impact;"+
             "Tahoma=Tahoma;"+
             "Times New Roman=Times New Roman;"+
-            "Verdana=verdana;",
-        valid_elements : "font[face|size|color],b/,i/em,u,br",
+            "Verdana=Verdana;",
+        */
+		valid_elements : "font[face|size|color],b/,i/em,u,br",
         theme_advanced_font_sizes : "22, 32, 42, 52, 62, 82",
-        inline_styles: false
-        //document_base_url : "<?php //echo $base_url;?>"
+        inline_styles: false,
+        //document_base_url : "<?php //echo $base_url;?>",
+
+		/*
+		setup : function(ed) {
+		      ed.onKeyDown.add(function(ed, e) {
+		          console.debug('Key press event: ' + e.keyCode);
+		      });
+		   }
+		*/
     });
 
+
 }
+
+//Default Values
+//var text_default_value = '<font face="Arial" size="52">Enter text here</font>';
+//var rss_default_value = '<font face="Arial" size="52">Enter URL here</font>';
+//tinyMCE.get('text-content').getDoc().execCommand('FontName', false, 'Arial');
+//tinyMCE.activeEditor.getDoc().execCommand('FontSize', false, '52');
 
 $('document').ready(function()
 {
@@ -336,7 +353,7 @@ $('document').ready(function()
 	//Highligh playlist content based on current content playing on DS
 	if($('#sortable').size())
 	{
-		window.setInterval(playlistContentHighlight, 2000);  
+		//window.setInterval(playlistContentHighlight, 2000);  
 	}
 	
 	//Get html content of file broswer list
@@ -647,11 +664,21 @@ $('document').ready(function()
         show: 'fadeIn',
         hide: 'fadeOut',
         open:function(event, id) {
-              loadTinyMCE();
-              //Clear Values
-              $('#text-name').val('');
-              $('#text-content').val('');
-        },
+        	loadTinyMCE();
+			//Clear Values
+            $('#text-name').val('');
+            $('#text-content').val('');
+			
+			setTimeout(function(){
+					//tinyMCE.activeEditor.setContent(text_default_value);
+					//tinyMCE.execCommand('mceFocus',false,'text-content');
+					
+					//Set Font Family and Font Size on Load
+					tinyMCE.activeEditor.getDoc().execCommand('FontName', false, 'Arial');
+					tinyMCE.activeEditor.getDoc().execCommand('FontSize', false, '52');
+		     	}, 1000); // <-- time in milliseconds			
+
+		},
         close:function(event, id) {
             //tinyMCE.triggerSave();
             /*var i, t = tinyMCE.editors;
@@ -670,7 +697,7 @@ $('document').ready(function()
                 }
             }
         },
-        buttons: {
+		buttons: {
             Cancel: function() {
                 $(this).dialog('close');
             },
@@ -804,6 +831,14 @@ $('document').ready(function()
 			loadTinyMCE();
         	$('#rss-name').val('');
 			$('#rss-content').val('');
+			
+			setTimeout(function(){
+					//Set Font Family and Font Size on Load
+					tinyMCE.activeEditor.getDoc().execCommand('FontName', false, 'Arial');
+					tinyMCE.activeEditor.getDoc().execCommand('FontSize', false, '52');
+					
+					
+		     	}, 1000); // <-- time in milliseconds
         },
         close:function(event, id) {
             document.forms['form-rss'].reset();
@@ -1284,6 +1319,9 @@ $('document').ready(function()
         
         $("#dialog-save-playlist-as").dialog("open");
     });
+
+	//TinyMCE Default Font Settings
+	$("#mce_4").addClass('test');
 
 });
 

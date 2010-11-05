@@ -217,6 +217,7 @@ class functions_Core {
 	public function dropDownValueScrollSpeed($selected_value=NULL)
 	{
 		$render = '
+			<option value="0" '.functions::selectedValueDropdown($selected_value, '0').'>0</option>
 			<option value="1" '.functions::selectedValueDropdown($selected_value, '1').'>1</option>
 			<option value="2" '.functions::selectedValueDropdown($selected_value, '2').'>2</option>
 			<option value="5" '.functions::selectedValueDropdown($selected_value, '5').'>5</option>
