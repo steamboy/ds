@@ -25,7 +25,7 @@ if($list_video_playlist)
 ?>
 <div id="dialog_video_playlist" class="dialog-window" title="Video Playlist">
     <input type="hidden" name="component_id">
-	<ul>
+	<ul> 
 		<?php
 		foreach ($list_video_playlist as $list_video_playlists)
 		{

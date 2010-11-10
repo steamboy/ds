@@ -254,7 +254,7 @@ class functions_Core {
 		}
 		
 		return $filename;
-	}
+	} 
 
 }
  
