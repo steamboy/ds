@@ -59,6 +59,11 @@
                         <li><a <?php echo functions::highlightNavLink($this->uri->segment(1),'report');?> href="<?php echo url::base();?>index.php/report/dates">View Report</a></li>
                     </ul>
                 </li>
+				<li><img src="<?php echo url::base();?>media/images/Settings_32.png" alt="Report"> Settings
+                    <ul>
+                        <li><a <?php echo functions::highlightNavLink($this->uri->segment(1),'report');?> href="<?php echo url::base();?>index.php/settings/edit/">View Settings</a></li>
+                    </ul>
+                </li>
                 <!--<li><a href="<?php echo url::base();?>index.php/user">User</a>
                     <ul>
                         <li><a href="<?php echo url::base();?>index.php/user">View List of User</a></li>

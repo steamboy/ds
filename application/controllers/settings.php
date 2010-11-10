@@ -1,6 +1,6 @@
 <?php defined('SYSPATH') OR die('No direct access allowed.');
  
-class Setting_Controller extends Template_Controller {
+class Settings_Controller extends Template_Controller {
 
  	public function __construct()
 	{
