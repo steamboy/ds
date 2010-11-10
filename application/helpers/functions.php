@@ -128,6 +128,7 @@ class functions_Core {
         return $value;
     }
 
+	// Display XML attributes
     public static function xmlAttributeDisplay($attribute,$value)
     {
         if($value OR $value == '0')
@@ -141,6 +142,7 @@ class functions_Core {
         return $render;
     }
 
+	//Acount Expiration
     public static function accountExpiration(){ ////Check Expiration
 	        $exp_date = '2020-08-07';
 	        $todays_date = date("Y-m-d");
@@ -152,7 +154,8 @@ class functions_Core {
 	            url::redirect('users/expired');
 	        }
 	    }
-
+		
+	//Check folder
     public static function isFolder($path)
     {
         if(is_dir($path)){
@@ -160,6 +163,7 @@ class functions_Core {
         }
     }
 
+	// Get Playlist name
     public static function getPlaylistName($playlist_id)
     {
         $db=New Database;
@@ -232,6 +236,26 @@ class functions_Core {
 		
 		return $render;
 	}
+	
+	// List System Fonts
+	public static function list_system_fonts($font_root) {
+		$files = scandir($font_root, 0);
+		
+		$filename = array();
+
+		for( $ctr = 1; $ctr < sizeof( $files ); $ctr++ ){
+		    if($files[$ctr] != "." && $files[$ctr] != ".."){
+		        $i = $ctr.',';
+				
+				if(!functions::isFolder($font_root.'/'.$files[$ctr]))
+					$file = explode('.', $files[$ctr]);
+					$filename[] = $file[0];
+		    }
+		}
+		
+		return $filename;
+	}
+
 }
  
 ?>

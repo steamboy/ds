@@ -145,7 +145,7 @@ if($list_text_playlist)
 </div>
 
 <div id="header">
-    <h1><a href="#"><img src="<?php echo url::base();?>media/images/logo.gif" alt="DS"></a></h1>
+    <h1><a href="<?php echo url::base();?>"><img src="<?php echo url::base();?>media/images/logo.gif" alt="DS"></a></h1>
     <?php
     if ($this->auth->logged_in('login'))
     {
@@ -294,6 +294,25 @@ function loadTinyMCE(){
             "Times New Roman=Times New Roman;"+
             "Verdana=Verdana;",
         */
+		
+		theme_advanced_fonts :
+		<?php
+		//List System Fonts
+		$fonts = functions::list_system_fonts('file:///Library/Fonts/');
+		$total_fonts = count($fonts);
+		$i = 1;
+		foreach ($fonts as $font):
+			$font_delimiter = '+';
+			if($i == $total_fonts):
+				$font_delimiter = ',';
+			endif;
+		?>
+			"<?php echo ucfirst($font);?>=<?php echo ucfirst($font);?>;"<?php echo "$font_delimiter\n";?>
+		<?php
+			$i++;
+		endforeach;
+		?>
+		
 		valid_elements : "font[face|size|color],b/,i/em,u,br",
         theme_advanced_font_sizes : "22, 32, 42, 52, 62, 82",
         inline_styles: false,
