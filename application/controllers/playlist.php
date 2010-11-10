@@ -29,29 +29,24 @@ class Playlist_Controller extends Template_Controller {
         
         if(!$type) //Playlist List
         {
-            $this->template->content           = new View('/shadadmin/playlist-list');
+            $this->template->content           = new View('/shadadmin/playlists/playlist-list');
             $this->template->content->playlist = $this->playlist_model->get_all_playlist_by_type($component_type);
             
-            //Toggle View XML Link
-            $this->template->content->view_xml = $this->template->view_xml;
-        
         }
         
         if($type == 'delete')
         {
             $this->playlist_model->delete_playlist($component_type.'_playlist',$id);
             
-            $this->template->content           = new View('/shadadmin/playlist-list');
+            $this->template->content           = new View('/shadadmin/playlists/playlist-list');
             $this->template->content->playlist = $this->playlist_model->get_all_playlist_by_type($component_type);    
             $this->template->message           = 'msg_playlist_delete';
-            
-            //Toggle View XML Link
-            $this->template->content->view_xml = $this->template->view_xml;
+           	
         }
         
         if($type == 'create')
         {
-            $this->template->content                   = new View('/shadadmin/playlist-form'); //01-22-10: Updated template
+            $this->template->content                   = new View('/shadadmin/playlists/playlist-form'); //01-22-10: Updated template
             $this->template->content->playlist_name    = '';
             $this->template->content->playlist_content = ''; //01-22-10
             
@@ -124,7 +119,7 @@ class Playlist_Controller extends Template_Controller {
         {
             
             $this->template->message = $message;
-            $this->template->content = new View('/shadadmin/playlist-form'); //01-22-10: Updated template        
+            $this->template->content = new View('/shadadmin/playlists/playlist-form'); //01-22-10: Updated template        
             $playlist                = $this->playlist_model->get_playlist($id);
             
             foreach ($playlist as $playlists)
@@ -179,18 +174,18 @@ class Playlist_Controller extends Template_Controller {
         if($component_type == 'text') //Text Component
         {
             $this->template->content->style_width = "style='width:100%'";
-            $this->template->content->file_list   = functions::list_folder_files($this->content_location.'content/'.$component_type.'images');
+            $this->template->content->file_list   = functions::list_folder_files(settings::content_path().$component_type.'images');
             $this->template->content->filebrowser = '';
         }
         else
         {
-            $this->template->content->filebrowser = new View('/shadadmin/playlist-filebrowser');
+            $this->template->content->filebrowser = new View('/shadadmin/playlists/playlist-filebrowser');
             
-            $component_type_files = functions::list_folder_files($this->content_location.'content/'.$component_type); //List files inside component type folders
+            $component_type_files = functions::list_folder_files(settings::content_path().$component_type); //List files inside component type folders
                
             if($component_type == 'image')
             {
-                $swf_files = functions::list_folder_files($this->content_location.'content/swf'); //List files inside swf folder
+                $swf_files = functions::list_folder_files(settings::content_path().'swf'); //List files inside swf folder
                 $file_list = array_merge($component_type_files,$swf_files); //List combined file list
                 
                 $this->template->content->filebrowser->file_list = $file_list;
@@ -219,9 +214,9 @@ class Playlist_Controller extends Template_Controller {
             $component_type = $_POST['component_type'];
             $value          = $_POST['value'];
             
-            if(functions::isFolder($this->content_location.'content/'.$component_type.'/'.$value))
+            if(functions::isFolder(settings::content_path().$component_type.'/'.$value))
             {
-                $files = functions::list_folder_files($this->content_location.'content/'.$component_type.'/'.$value); //List files inside component type folders
+                $files = functions::list_folder_files(settings::content_path().$component_type.'/'.$value); //List files inside component type folders
             
                 rsort($files);
             

@@ -25,6 +25,22 @@ class settings_Core {
             return $setting->value;
         }
 	}
+	
+	//Display XML for debugging
+	public static function view_xml() {
+		$db=New Database;
+        
+        $settings = $db->query("SELECT value FROM settings WHERE name = 'view_xml'");
+        
+        foreach ($settings as $setting)
+        {
+            if ($setting->value == 'true'):
+				return $setting->value;
+			else:
+				return '';
+			endif; 
+        }
+	}
 }
 
 ?>

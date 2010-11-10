@@ -44,7 +44,7 @@ class Report_Controller extends Template_Controller {
             }
         }
         
-        $this->template->content = new View('/shadadmin/report-list');
+        $this->template->content = new View('/shadadmin/reports/report-list');
 			
 		$this->template->content->reports      = '';
 		$this->template->content->display_date = '';
@@ -99,7 +99,7 @@ class Report_Controller extends Template_Controller {
             }
         }
         
-        $this->template->content = new View('/shadadmin/report-list');
+        $this->template->content = new View('/shadadmin/reports/report-list');
             
         $this->template->content->reports      = '';
         $this->template->content->display_date = '';
@@ -165,7 +165,7 @@ class Report_Controller extends Template_Controller {
             $search = $_POST['search'];
         }
         
-        $this->template->content = new View('/shadadmin/report-list');
+        $this->template->content = new View('/shadadmin/reports/report-list');
 		
 		$this->template->content->display_date = $date;
 		

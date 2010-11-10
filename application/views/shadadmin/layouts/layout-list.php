@@ -31,7 +31,7 @@
                     <a class="remove_layout" id="<?php echo $layouts->id;?>">Remove</a>
                      |
                     <?php
-                    if($view_xml){   
+                    if(settings::view_xml()){   
                     ?> 
                     <a href="<?php echo url::base();?>index.php/xml/layout/<?php echo $layouts->id;?>" target="_blank">View XML</a> |
                     <?php

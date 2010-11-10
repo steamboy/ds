@@ -23,7 +23,7 @@ class Xml_Controller extends Controller {
 	//Video
     public function video($id)
 	{
-		$view = new View('/shadadmin/video-playlist-xml');
+		$view = new View('/shadadmin/xmls/video-playlist-xml');
 		
 		$view->playlist_id      = $id;
 		$view->playlist_content = $this->playlist_model->get_playlist_content('video_playlist',$id);
@@ -37,7 +37,7 @@ class Xml_Controller extends Controller {
     //Image
     public function image($id)
     {
-        $view = new View('/shadadmin/image-playlist-xml');
+        $view = new View('/shadadmin/xmls/image-playlist-xml');
         
         $view->playlist_id      = $id;
         $view->playlist_content = $this->playlist_model->get_playlist_content('image_playlist',$id);
@@ -48,7 +48,7 @@ class Xml_Controller extends Controller {
     //Text
 	public function text($id)
 	{
-		$view = new View('/shadadmin/text-playlist-xml');
+		$view = new View('/shadadmin/xmls/text-playlist-xml');
 		
 		$view->playlist_id      = $id;
 		$view->playlist_content = $this->playlist_model->get_playlist_content('text_playlist',$id);
@@ -68,7 +68,7 @@ class Xml_Controller extends Controller {
 	
 	public function layout($layout_id=null)
 	{
-		$view = new View('/shadadmin/layout-xml');
+		$view = new View('/shadadmin/xmls/layout-xml');
 		
 		if (!$layout_id)
 		{

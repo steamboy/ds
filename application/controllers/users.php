@@ -22,7 +22,7 @@ class Users_Controller extends Template_Controller {
 		if ( ! $this->session->get('referer'))
 			$this->session->set('referer', request::referrer());
 
-		$this->template->content = View::factory('shadadmin/login')
+		$this->template->content = View::factory('shadadmin/users/login')
 			->bind('errors', $errors);
 
 		$post = Validation::factory($_POST)
@@ -56,7 +56,7 @@ class Users_Controller extends Template_Controller {
 	{
         $this->template->title = 'Login';
     
-		$this->template->content = View::factory('shadadmin/register')
+		$this->template->content = View::factory('shadadmin/users/register')
 			->bind('captcha', $captcha);
             
 		if ($_POST)
@@ -87,7 +87,7 @@ class Users_Controller extends Template_Controller {
     {
         $this->auth->logout(TRUE);
         $this->template->title   = 'Account Expired';
-        $this->template->content = new View('/shadadmin/expired');
+        $this->template->content = new View('/shadadmin/messages/expired');
     }
 
 } // End Tags Controller

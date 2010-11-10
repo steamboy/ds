@@ -23,7 +23,7 @@ class Dstemplate_Controller extends Template_Controller {
 	
  	public function index($message=NULL)
 	{
-		$this->template->content = new View('/shadadmin/dstemplate-list');
+		$this->template->content = new View('/shadadmin/dstemplates/dstemplate-list');
 		
 		$this->template->content->dstemplate = $this->dstemplate_model->get_all_dstemplate();
         
@@ -33,7 +33,7 @@ class Dstemplate_Controller extends Template_Controller {
 
     public function form($form_type, $template_id=NULL, $message=NULL)
     {
-        $this->template->content = new View('/shadadmin/dstemplate-form');
+        $this->template->content = new View('/shadadmin/dstemplates/dstemplate-form');
         $this->template->content->form_type = $form_type;
         
         $this->template->content->template_name              = '';

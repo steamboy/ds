@@ -25,7 +25,7 @@ class Layout_Controller extends Template_Controller {
 
  	public function index()
 	{
-		$this->template->content         = new View('/shadadmin/layout-list');
+		$this->template->content         = new View('/shadadmin/layouts/layout-list');
         $this->template->content->layout = $this->layout_model->get_all_layout();
         
 		$this->template->content->current_layout_id = '';
@@ -34,9 +34,6 @@ class Layout_Controller extends Template_Controller {
         {
 			$this->template->content->current_layout_id = $current_layout->layout_id;
         }
-        
-        //Toggle View XML Link
-        $this->template->content->view_xml = $this->template->view_xml;
 	}
 
 	public function get_playlist_name($id)
@@ -51,7 +48,7 @@ class Layout_Controller extends Template_Controller {
 
 	public function form($form_type, $layout_id=null, $message=null)
 	{
-		$this->template->content = new View('/shadadmin/layout-form');
+		$this->template->content = new View('/shadadmin/layouts/layout-form');
 			
         $this->template->list_video_playlist = $this->playlist_model->get_all_playlist_by_type('video');
 		$this->template->list_image_playlist = $this->playlist_model->get_all_playlist_by_type('image');

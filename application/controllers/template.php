@@ -21,12 +21,6 @@ abstract class Template_Controller extends Controller {
     
 	// Default to do auto-rendering
 	public $auto_render = TRUE;
-
-	// DS content/files location (videos, images)
-	public $content_location = '/DS/';
-	
-	// Toggle View XML Button/Link
-	public $view_xml = TRUE;
 	
 	/**
 	 * Template loading and setup routine.
@@ -50,8 +44,8 @@ abstract class Template_Controller extends Controller {
         
         //Template Variables
         $this->template->navigation = new View('/shadadmin/navigation');
-        $this->template->search     = ''; //new View('/shadadmin/search')
-        $this->template->blog       = ''; //new View('/shadadmin/blog')
+        $this->template->search     = ''; //new View('/shadadmin/templates/search')
+        $this->template->blog       = ''; //new View('/shadadmin/templates/blog')
         
         //Template - error messages
         $this->template->message        = ''; 
@@ -74,9 +68,6 @@ abstract class Template_Controller extends Controller {
         
         //Display Username
         $this->template->username = $username;
-        
-		//Display VIEW XML Link
-        $this->template->view_xml = $this->view_xml;
 	}
 
 	/**

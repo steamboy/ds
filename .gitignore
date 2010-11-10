@@ -1,6 +1,14 @@
-# OS generated files #
-######################
-.DS_Store?
-ehthumbs.db
-Icon?
-Thumbs.db
+log/*
+tmp/*
+db/*.sqlite3
+public/system/*
+.DS_Store
+app/.DS_Store
+db/.DS_Store
+db/migrate/.DS_Store
+public/.DS_Store
+config/database.yml
+application/logs/*
+ds.tmproj
+applications/.DS_Store
+media/.DS_Store

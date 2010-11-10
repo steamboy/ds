@@ -24,7 +24,7 @@
                     <a id="<?php echo $component_type;?>:<?php echo $playlists->id;?>" class="save-playlist-as">Save As</a> |
                     <a class="remove_playlist" id="<?php echo $playlists->id;?>">Remove</a> 
                 <?php
-                if($view_xml){   
+                if(settings::view_xml()){   
                 ?>
                 | <a href="<?php echo url::base();?>index.php/xml/<?php echo $component_type;?>/<?php echo $playlists->id;?>" target="_blank">View XML</a></td>
 			    <?php
