@@ -5,7 +5,7 @@
 		<div class="navigation">
 			<ul>
 				<li class="active"><a href="#">Dashboard</a></li>
-				<li><img src="<?php echo url::base();?>media/images/resolution_32.ico" alt="Layout"> Layout
+				<li><div><img src="<?php echo url::base();?>media/images/resolution_32.ico" alt="Layout"> Layout</div>
 					<ul>
 						<li><a
 							<?php
@@ -21,7 +21,7 @@
 							href="<?php echo url::base();?>index.php/dstemplate">Select Template</a></li>
 					</ul>
 				</li>
-				<li><img src="<?php echo url::base();?>media/images/Movies_32.png" alt="Video"> Video
+				<li><div><img src="<?php echo url::base();?>media/images/Movies_32.png" alt="Video"> Video</div>
 					<ul>
 						<li><a
 							<?php
@@ -32,7 +32,7 @@
 						<li><a <?php echo functions::highlightNavLink($this->uri->string(),'playlist/component/video/create');?> href="<?php echo url::base();?>index.php/playlist/component/video/create">Create Playlist</a></li>
 					</ul>
 				</li>
-				<li><img src="<?php echo url::base();?>media/images/Picture_32.png" alt="Image"> Image
+				<li><div><img src="<?php echo url::base();?>media/images/Picture_32.png" alt="Image"> Image</div>
                     <ul>
                         <li><a
 							<?php
@@ -43,7 +43,7 @@
                         <li><a <?php echo functions::highlightNavLink($this->uri->string(),'playlist/component/image/create');?> href="<?php echo url::base();?>index.php/playlist/component/image/create">Create Playlist</a></li>
                     </ul>
                 </li>
-				<li><img src="<?php echo url::base();?>media/images/Font_32.png" alt="Text"> Text
+				<li><div><img src="<?php echo url::base();?>media/images/Font_32.png" alt="Text"> Text</div>
 					<ul>
 						<li><a
 							<?php
@@ -54,14 +54,17 @@
 						<li><a <?php echo functions::highlightNavLink($this->uri->string(),'playlist/component/text/create');?> href="<?php echo url::base();?>index.php/playlist/component/text/create">Create Playlist</a></li>
 					</ul>
 				</li>
-                <li><img src="<?php echo url::base();?>media/images/Reports-32.png" alt="Report"> Report
+                <li><div><img src="<?php echo url::base();?>media/images/Reports-32.png" alt="Report"> Report</div>
                     <ul>
                         <li><a <?php echo functions::highlightNavLink($this->uri->segment(1),'report');?> href="<?php echo url::base();?>index.php/report/dates">View Report</a></li>
                     </ul>
                 </li>
-				<li><img src="<?php echo url::base();?>media/images/Settings_32.png" alt="Report"> Settings
-                    <ul>
-                        <li><a <?php echo functions::highlightNavLink($this->uri->segment(1),'report');?> href="<?php echo url::base();?>index.php/settings/edit/">View Settings</a></li>
+				<li>
+					<div>
+						<img src="<?php echo url::base();?>media/images/Settings_32.png" alt="Report"> Settings
+                    </div>
+					<ul>
+                        <li><a <?php echo functions::highlightNavLink($this->uri->segment(1),'settings');?> href="<?php echo url::base();?>index.php/settings/edit/">View Settings</a></li>
                     </ul>
                 </li>
                 <!--<li><a href="<?php echo url::base();?>index.php/user">User</a>
