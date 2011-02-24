@@ -7,7 +7,7 @@ class Xml_Controller extends Controller {
  	public function __construct()
 	{
 		parent::__construct(); //necessary
-        
+		
         functions::accountExpiration();
         		
 		$this->playlist_model = new Playlist_Model;

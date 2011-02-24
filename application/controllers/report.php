@@ -6,6 +6,14 @@ class Report_Controller extends Template_Controller {
 	{
 		parent::__construct(); //necessary
 		
+		//Auth
+        if ( ! $this->auth->logged_in('login'))
+        {
+            $this->session->set_flash('login_message', 'Please login to continue');
+            $this->session->set('referer', url::current());
+            url::redirect('users/login');
+        }
+		
 		$this->playlist_model   = new Playlist_Model;
 		$this->layout_model     = new Layout_Model;
 		$this->dstemplate_model = new Dstemplate_Model;

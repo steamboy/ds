@@ -3,7 +3,7 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<title>DS Admin | <?php echo $title;?></title>
+<title>DSS Admin | <?php echo $title;?></title>
 
 <link type="text/css" href="/ds/media/jquery/jquery-ui-1.7.2/themes/base/ui.all.css" rel="stylesheet" />
 <?php echo html::stylesheet('media/jquery/jquery-validate/css/screen.css', 'screen')?>
@@ -1473,7 +1473,7 @@ function addToPlaylist(msg, component_type, ui_item, pl_list_no)
     {
         //List files from folder
         folder_name = add_to_pl_value_split[1].replace(' ','-');
-        
+
         var file = JSON.parse(msg);
         var rendered_item;
 

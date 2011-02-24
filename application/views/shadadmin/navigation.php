@@ -67,11 +67,14 @@
                         <li><a <?php echo functions::highlightNavLink($this->uri->segment(1),'settings');?> href="<?php echo url::base();?>index.php/settings/edit/">View Settings</a></li>
                     </ul>
                 </li>
-                <!--<li><a href="<?php echo url::base();?>index.php/user">User</a>
-                    <ul>
-                        <li><a href="<?php echo url::base();?>index.php/user">View List of User</a></li>
-                        <li><a href="<?php echo url::base();?>index.php/user/form/create">Create User</a></li>
-                    </ul>
-                </li>-->
+                <li>
+					<div>
+						<img src="<?php echo url::base();?>media/images/User-32.png" alt="Report"> Users
+                    </div>
+                	<ul>
+                         <li><a href="<?php echo url::base();?>index.php/users">View List of User</a></li>
+                         <li><a href="<?php echo url::base();?>index.php/users/add">Create User</a></li>
+                   	</ul>
+                </li>
 			</ul>
 		</div>

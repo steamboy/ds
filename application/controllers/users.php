@@ -5,12 +5,29 @@ class Users_Controller extends Template_Controller {
     public function __construct()
     {
         parent::__construct(); //necessary
-        
-        $this->playlist_model                = new Playlist_Model;
-        $this->layout_model                  = new Layout_Model;
-        $this->template->navigation          = '';
     }
     
+	public function index()
+	{
+		//Auth
+        if ( ! $this->auth->logged_in('login'))
+        {
+            $this->session->set_flash('login_message', 'Please login to continue');
+            $this->session->set('referer', url::current());
+            url::redirect('users/login');
+        }
+		
+		$this->template->title = 'Users';
+		
+		$this->template->navigation = new View('/shadadmin/navigation');
+		
+		$this->template->content = View::factory('shadadmin/users/index');
+		
+		$users = ORM::factory('user')->find_all();
+		
+		$this->template->content->set('users', $users);
+	}
+
 	public function login($tag_id = NULL)
 	{
         if ($this->auth->logged_in('login')){
@@ -21,7 +38,7 @@ class Users_Controller extends Template_Controller {
 
 		if ( ! $this->session->get('referer'))
 			$this->session->set('referer', request::referrer());
-
+				
 		$this->template->content = View::factory('shadadmin/users/login')
 			->bind('errors', $errors);
 
@@ -29,6 +46,7 @@ class Users_Controller extends Template_Controller {
 			->pre_filter('trim')
 			->add_rules('username', 'required')
 			->add_rules('password', 'required');
+			
 
 		if ($post->validate())
 		{
@@ -50,14 +68,15 @@ class Users_Controller extends Template_Controller {
 
 		$errors = $post->errors('errors_users_login');
 
+		$this->template->navigation = '';
 	}
 	
-	public function register($tag_id = NULL)
+	public function add($tag_id = NULL)
 	{
-        $this->template->title = 'Login';
+        $this->template->title = 'Create User';
     
-		$this->template->content = View::factory('shadadmin/users/register')
-			->bind('captcha', $captcha);
+		$this->template->content = View::factory('shadadmin/users/add');
+			//->bind('captcha', $captcha);
             
 		if ($_POST)
 		{
@@ -74,7 +93,43 @@ class Users_Controller extends Template_Controller {
 			}
 			$this->template->content->set('errors', $post->errors('errors_users_register'));
 		}
-		$captcha = new Captcha;
+		
+		//$captcha = new Captcha;
+		
+		$this->template->navigation = new View('/shadadmin/navigation');
+	}
+	
+	public function edit($id)
+	{
+        $this->template->title = 'Update User';
+		
+		$this->template->content = View::factory('shadadmin/users/edit');
+            
+		$user = ORM::factory('user')->find($id);
+		
+		if ($_POST)
+		{
+			$post = $this->input->post();
+
+			// need to delete pivot table and add a new one
+			$user->add(ORM::factory('role', 'admin'));
+
+			if ($user->validate($post, TRUE))
+			{
+				$this->auth->login($user, $post->password);
+				url::redirect();
+			}
+			$this->template->content->set('errors', $post->errors('errors_users_register'));
+		}
+
+		//$captcha = new Captcha;
+		
+		$this->template->navigation = new View('/shadadmin/navigation');
+		
+		$this->template->content->set('user', $user);
+	
+		//echo Kohana::debug($user);
+		//exit;
 	}
 
 	public function logout()
@@ -88,6 +143,7 @@ class Users_Controller extends Template_Controller {
         $this->auth->logout(TRUE);
         $this->template->title   = 'Account Expired';
         $this->template->content = new View('/shadadmin/messages/expired');
+		$this->template->navigation = '';
     }
 
 } // End Tags Controller

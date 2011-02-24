@@ -1,3 +1,7 @@
+<div class="title">		
+	<h2>Welcome to DDS Adminstration</h2>
+</div>
+
 <div class="box">
 	<h2>Login</h2>
 	<?php echo '<p>'.$this->session->get('login_message').'</p>'; ?>
@@ -10,13 +14,21 @@
 	<?php	endif ?>
 	
 		<?php echo form::open('users/login', array('id'=>'user_login')); ?>
-		<div>
-		    <ul>
-                <li><?php echo form::label('username', 'Username');?> <?php echo form::input('username', form::set_value('username'));?></li>
-                <li><?php echo form::label('password', 'Password');?> <?php echo form::password('password');?></li>
-                <li><?php echo form::submit('sign_in', 'Log in', 'class="submit"');?></li>
-            </ul>
-		</div>
+		<ul>
+            <li>
+				<?php echo form::label('username', 'Username');?>
+				<div>
+					<?php echo form::input('username', form::set_value('username'));?>
+            	</div>
+			</li>
+			<li>
+				<?php echo form::label('password', 'Password');?>
+				<div>
+					<?php echo form::password('password');?>
+            	</div>
+			</li>
+			<li><?php echo form::submit('sign_in', 'Log in', 'class="submit"');?></li>
+        </ul>
 		<?php echo form::close(); ?>
 	
 </div>
