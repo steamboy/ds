@@ -3,6 +3,7 @@ tmp/*
 db/*.sqlite3
 public/system/*
 .DS_Store
+.DS_Store*
 app/.DS_Store
 db/.DS_Store
 db/migrate/.DS_Store
