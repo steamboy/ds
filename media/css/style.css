@@ -486,7 +486,7 @@ a {cursor: pointer; cursor: hand;}
 	height: 80px;
 }
 
-.pl_item_fullscreen_holder ,.pl_item_exposure_holder { /*Video Fullscreen Checkbox / Image Exposure*/ 
+.pl_item_fullscreen_holder, .pl_item_exposure_holder { /*Video Fullscreen Checkbox / Image Exposure */ 
     position: absolute;
     top: 5px;
     left: 360px;
@@ -504,6 +504,7 @@ a {cursor: pointer; cursor: hand;}
     left: 20px;
 }
 
+
 .pl_item_delay_holder {
     position: absolute;
     top: 3px;
@@ -514,6 +515,19 @@ a {cursor: pointer; cursor: hand;}
     width: 20px;
 }
 
+/*
+.pl_item_preview_holder {
+    position: absolute;
+    top: 3px;
+    left: 510px;
+}
+
+.pl_item_preview_holder div{ 
+    position: absolute;
+    top: 0px;
+    left: 20px;
+}
+*/
 
 /* playlist - list- sortable */
 

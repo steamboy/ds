@@ -138,7 +138,7 @@
                                         <div class="pl_item_exposure_holder"><b>EXPOSURE</b></div>
                                     <?php } ?>
                                     </div>
-
+									
                                     <ul id="sortable" class="connectedSortable">
 
                                         <?php 
@@ -150,7 +150,7 @@
                                                 <div class="pl_item_holder">
                                                     <div class="pl_item_cb_holder"><input type="checkbox" name="pl_item_cb" class="pl_item_cb_class" value="<?php echo $playlist_contents->id;?>:<?php echo $playlist_contents->filename;?>"></div>
                                                     <div class="pl_item_name_holder" style="top:3px;"><input type="text" name="pl_item_name[]" value="<?php echo $playlist_contents->name; ?>" ></div>
-                                                    <div class="pl_item_filename_holder" title="<?php echo functions::playlistFilenameCheck($playlist_contents->filename);?>"><?php echo functions::ShortenText(functions::playlistFilenameCheck($playlist_contents->filename)); ?></div>
+                                                    <div class="pl_item_filename_holder" title="<?php echo functions::playlistFilenameCheck($playlist_contents->filename);?>"><a class="video_preview"><?php echo functions::ShortenText(functions::playlistFilenameCheck($playlist_contents->filename)); ?></a></div>
                                                     <?php if($component_type == 'video'){ ?>
                                                     <div class="pl_item_fullscreen_holder"><input type="checkbox" class="pl_item_cb_class cb_fullscreen" value="<?php echo $playlist_contents->id;?>" <?php if($playlist_contents->display == 'fullscreen'){ echo 'checked'; } ?>> <div>Fullscreen</div><input type="hidden" name="pl_item_fullscreen[]" id="hidden_fullscreen<?php echo $playlist_contents->id;?>" value="<?php if($playlist_contents->display == 'fullscreen'){ echo 'fullscreen'; } else { echo 'normal'; } ?>"></div>
                                                     <?php } ?>
@@ -166,8 +166,7 @@
                                                     ?>
                                                     <div class="pl_item_fullscreen_holder"><input type="checkbox" class="pl_item_cb_class cb_boxed" value="<?php echo $playlist_contents->id;?>" <?php if($playlist_contents->boxed == 'false'){ echo 'checked'; } ?>> <div>Unboxed</div><input type="hidden" name="pl_item_boxed[]" id="hidden_boxed<?php echo $playlist_contents->id;?>" value="<?php if($playlist_contents->boxed == 'false'){ echo 'false'; } else { echo 'true'; } ?>"></div>
                                                     <div class="pl_item_delay_holder" <?php echo $delay_hidden;?>><input type="text" name="pl_item_delay[]" class="class_item_delay delay_input" value="<?php echo $playlist_contents->delay;?>"> Delay (sec)</div>
-                                                    <?php } ?>
-
+                                                    <?php } ?>	
                                                     <div class="pl_item_remove_holder" ><a class="remove_pl_item"><img src="<?php echo url::base();?>media/images/delete-16x16.png" border="0"></a></div>
                                                     <input type="hidden" name="pl_item_filename[]" value="<?php echo $playlist_contents->filename;?>">
                                                 </div>
@@ -206,7 +205,7 @@
                                                         ?>
                                                         </a>
                                                     </div>
-                                                    <div class="pl_item_text_img_align_holder">
+													<div class="pl_item_text_img_align_holder">
                                                         <select name="pl_item_text_img_align[]" class="class_pl_item_text_img_align">
                                                             <option value="left" <?php echo functions::selectedValueDropdown($playlist_contents->image_alignment,'left');?>>Left</option>
                                                             <option value="right" <?php echo functions::selectedValueDropdown($playlist_contents->image_alignment,'right');?>>Right</option></select>

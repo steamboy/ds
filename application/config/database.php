@@ -31,11 +31,11 @@ $config['default'] = array
 	(
 		'type'     => 'mysql',
 		'user'     => 'root',
-		'pass'     => 'password',
+		'pass'     => '',
 		'host'     => 'localhost',
 		'port'     => FALSE,
 		'socket'   => FALSE,
-		'database' => 'ds'
+		'database' => 'ds_fujitsu'
 	),
 	'character_set' => 'utf8',
 	'table_prefix'  => '',
