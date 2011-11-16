@@ -16,71 +16,72 @@
  */
 abstract class Template_Controller extends Controller {
 
-	// Template view name
-    public $template = 'shadadmin/template';
-    
-	// Default to do auto-rendering
-	public $auto_render = TRUE;
-	
-	/**
-	 * Template loading and setup routine.
-	 */
-	public function __construct()
-	{
-		parent::__construct();
+  // Template view name
+  public $template = 'shadadmin/template';
 
-        $this->auth = new Auth;
-        
-		// Load the template
-		$this->template = new View($this->template);
+  // Default to do auto-rendering
+  public $auto_render = TRUE;
 
-		if ($this->auto_render == TRUE)
-		{
-			// Render the template immediately after the controller method
-			Event::add('system.post_controller', array($this, '_render'));
-		}
+  /**
+   * Template loading and setup routine.
+   */
+  public function __construct()
+  {
+    parent::__construct();
 
-        $this->session = Session::instance();
-        
-        //Template Variables
-        $this->template->navigation = new View('/shadadmin/navigation');
-        $this->template->search     = ''; //new View('/shadadmin/templates/search')
-        $this->template->blog       = ''; //new View('/shadadmin/templates/blog')
-        
-        //Template - error messages
-        $this->template->message        = ''; 
-        $this->template->message_type   = ''; 
-        $this->template->playlist_table = '';
-        $this->template->component_type = '';
-        
-        $this->template->list_video_playlist = '';
-        $this->template->list_image_playlist = '';
-        $this->template->list_text_playlist  = '';
-        
-        if($this->auth->logged_in('login'))
-		{
-            $username = Auth::instance()->get_user()->username;
-        }
-        else
-		{
-            $username = '';
-        }
-        
-        //Display Username
-        $this->template->username = $username;
-	}
+    $this->auth = new Auth;
 
-	/**
-	 * Render the loaded template.
-	 */
-	public function _render()
-	{
-		if ($this->auto_render == TRUE)
-		{
-			// Render the template when the class is destroyed
-			$this->template->render(TRUE);
-		}
-	}
-    
-    
+    // Load the template
+    $this->template = new View($this->template);
+
+    if ($this->auto_render == TRUE)
+    {
+      // Render the template immediately after the controller method
+      Event::add('system.post_controller', array($this, '_render'));
+    }
+
+    $this->session = Session::instance();
+
+    //Template Variables
+    $this->template->navigation = new View('/shadadmin/navigation');
+    $this->template->search     = ''; //new View('/shadadmin/templates/search')
+    $this->template->blog       = ''; //new View('/shadadmin/templates/blog')
+
+    //Template - error messages
+    $this->template->message        = ''; 
+    $this->template->message_type   = ''; 
+    $this->template->playlist_table = '';
+    $this->template->component_type = '';
+
+    $this->template->list_video_playlist = '';
+    $this->template->list_image_playlist = '';
+    $this->template->list_text_playlist  = '';
+
+    if($this->auth->logged_in('login'))
+    {
+      $username = Auth::instance()->get_user()->username;
+    }
+    else
+    {
+      $username = '';
+    }
+
+    //Display Username
+    $this->template->username = $username;
+
+  }
+
+  /**
+   * Render the loaded template.
+   */
+  public function _render()
+  {
+    if ($this->auto_render == TRUE)
+    {
+      // Render the template when the class is destroyed
+      $this->template->render(TRUE);
+    }
+  }
+
+
 } // End Template_Controller

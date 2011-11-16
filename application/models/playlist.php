@@ -257,7 +257,8 @@ class Playlist_Model extends Model {
         $filename = $playlists->filename;
       }
     }
-
+    
+    
     $start_time = "start_time = NOW(),";
     $end_time   = "end_time = ''";
 
@@ -268,11 +269,36 @@ class Playlist_Model extends Model {
       ".$start_time.$end_time;
 
     //Kohana::debug();
-
     $this->db->query($query);
 
     return mysql_insert_id();
-  }
+    
+    
+    /*
+    $report = array (
+      array($filename, $content_type, 'start', ''),
+    );
+
+    //File Report Variables
+    $report_path = $_SERVER{'DOCUMENT_ROOT'} . '/ds/reports/';
+    $date_today  = date('m-d-y');
+    $file        = $report_path . $date_today . '.txt';
+
+    //Check Date then create filename 
+    if (file_exists($file)) {
+      //append data here
+      $fh = fopen($file, 'a') or die("can't open file");
+      
+      fwrite($fh, $stringData);
+      fclose($fh);
+    }
+    else {
+      $ourFileHandle = fopen($file, 'w') or die("can't open file");
+      fclose($ourFileHandle);
+    }
+     */
+
+ }
 
   //Save Report content end time to database
   public function report_content_end($content_report_id)

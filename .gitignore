@@ -13,3 +13,4 @@ application/logs/*
 ds.tmproj
 applications/.DS_Store
 media/.DS_Store
+cache/

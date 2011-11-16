@@ -68,13 +68,13 @@
                     </ul>
                 </li>
                 <li>
-					<div>
+					<!--<div>
 						<img src="<?php echo url::base();?>media/images/User-32.png" alt="Report"> Users
                     </div>
                 	<ul>
                          <li><a href="<?php echo url::base();?>index.php/users">View List of User</a></li>
                          <li><a href="<?php echo url::base();?>index.php/users/add">Create User</a></li>
-                   	</ul>
+                   	</ul>-->
                 </li>
 			</ul>
 		</div>

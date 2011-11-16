@@ -54,9 +54,7 @@ echo '<?xml version="1.0" encoding="UTF-8" ?>';
 				$href = $item['link'];
 				$title = $item['title'];
 				$description = $item['description'];	
-				echo '<item id="'.$playlist_contents->id.'" name="'.$playlist_contents->name.'" type="text" image="content/image/'.$playlist_contents->image.'" align="'.$playlist_contents->image_alignment.'">
-					<![CDATA['.$html_tags_start.$title.' - '.$description.$html_tags_end.']]>
-				</item>';
+				echo '<item id="'.$playlist_contents->id.'" name="'.$playlist_contents->name.'" type="text" image="content/image/'.$playlist_contents->image.'" align="'.$playlist_contents->image_alignment.'"><![CDATA['.$html_tags_start.$title.' - '.$description.$html_tags_end.']]></item>';
 			endforeach;
 
 		else:
